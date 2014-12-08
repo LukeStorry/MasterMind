@@ -13,12 +13,20 @@ valid n guess
     | digits guess && length guess == 4	    = True
     | otherwise				    = False
 
+--counts how many perfect matches there are in the guess
 gold :: String -> String -> Integer
+
 contains :: Char -> String -> Bool
+
 remove :: Char -> String -> String
+
 total :: String -> String -> Integer
+
 silver :: String -> String -> Integer
+
 score :: String -> String -> String
+
 play :: String -> IO()
+
 main :: IO ()
 
