@@ -23,20 +23,24 @@ gold (s:ecret) (g:uess) -- splits off first char of each list
 
 --checks whether a string contains a Char
 contains :: Char -> String -> Bool
-contains c []       = False  --ends recursion
+contains _ []       = False  --ends recursion
 contains c (s:ecret)
     | c==s          = True
     | otherwise     = contains c ecret
 
 --removes the first occurence a digit from a string
 remove :: Char -> String -> String
-remove c [] = []
+remove c []	= []
 remove c [s:tring]
-    | c==s  = tring
-    | c/=s  = s ++ (remove tring)
+    | c==s	= tring
+    | c/=s	= s ++ (remove tring)
 
 --returns the total score, gold plus silver, i.e. the number of correct digits in the guess, without counting anything twice
 total :: String -> String -> Integer
+total _ []		    = 0
+total [secret] [g:uess] 
+    | contains g secret	    = (total (remove g secret) guess ) +1
+    | otherwise		    = total secret uess 
 
 --returns the silver score 
 silver :: String -> String -> Integer
