@@ -54,15 +54,20 @@ score secret guess
 
 --I/O loop which repeatedly (a) prints out a prompt and reads in a line of text 
 play :: String -> IO()
-play secret
-    = do    print "> "
-	    guess <- getLine
-	    if ((guess \= []) && (guess \= secret)
-		then print (score secret guess) 
-    | 
-
+play secret = do
+	putStr "> "
+	hFlush stdout
+	guess <- getLine
+	if ((guess \= []) && (guess \= secret)
+	    then do
+		print (score secret guess)  
+		play secret    
 --using: https://www.haskell.org/tutorial/io.html
+-- and http://stackoverflow.com/questions/5695649/
+
 
 --generates number, starts and ends game
 main :: IO()
 main = do  
+
+
