@@ -21,6 +21,10 @@ gold [s:ecret] [g:uess] -- splits off first char of each list
 
 --checks whether a string contains a Char
 contains :: Char -> String -> Bool
+contains c []       = 0  --ends recursion
+contains c [s:ecret]
+    | c==s          = contains c ecret +1
+    | otherwise     = contains c ecret
 
 --removes the first occurence a digit from a string
 remove :: Char -> String -> String
