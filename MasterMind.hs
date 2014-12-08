@@ -13,5 +13,12 @@ valid n guess
     | digits guess && length guess == 4	    = True
     | otherwise				    = False
 
-
+gold :: String -> String -> Integer
+contains :: Char -> String -> Bool
+remove :: Char -> String -> String
+total :: String -> String -> Integer
+silver :: String -> String -> Integer
+score :: String -> String -> String
+play :: String -> IO()
+main :: IO ()
 
