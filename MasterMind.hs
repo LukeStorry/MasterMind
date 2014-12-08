@@ -27,9 +27,13 @@ contains c []       = False  --ends recursion
 contains c (s:ecret)
     | c==s          = True
     | otherwise     = contains c ecret
-{-
+
 --removes the first occurence a digit from a string
 remove :: Char -> String -> String
+remove c [] = []
+remove c [s:tring]
+    | c==s  = tring
+    | c/=s  = s ++ (remove tring)
 
 --returns the total score, gold plus silver, i.e. the number of correct digits in the guess, without counting anything twice
 total :: String -> String -> Integer
@@ -43,6 +47,7 @@ score :: String -> String -> String
 --I/O loop which repeatedly (a) prints out a prompt and reads in a line of text 
 play :: String -> IO()
 -}
+
 --generates number, starts and ends game
 main :: IO()
 main = print  (contains 'r' "ljrlasjrdl")
