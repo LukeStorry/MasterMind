@@ -1,5 +1,4 @@
 import Data.Bool
-import Prelude
 
 --Checks whether a string consists of digits.
 digits :: String -> Bool
@@ -15,6 +14,10 @@ valid n guess
 
 --counts how many perfect matches there are in the guess
 gold :: String -> String -> Integer
+gold [] []	    = 0	 --ends recursion
+gold [s:ecret] [g:uess] -- splits off first char of each list
+    | s==g	    = gold ecret uess +1
+    | otherwise	    = gold ecret uess
 
 --checks whether a string contains a Char
 contains :: Char -> String -> Bool
@@ -22,14 +25,18 @@ contains :: Char -> String -> Bool
 --removes the first occurence a digit from a string
 remove :: Char -> String -> String
 
---
+--returns the total score, gold plus silver, i.e. the number of correct digits in the guess, without counting anything twice
 total :: String -> String -> Integer
 
+--returns the silver score 
 silver :: String -> String -> Integer
 
+--result is a message for the user
 score :: String -> String -> String
 
+--I/O loop which repeatedly (a) prints out a prompt and reads in a line of text 
 play :: String -> IO()
 
-main :: IO ()
-
+--generates number, starts and ends game
+main :: bool
+main = contains r ljrlasjrdl
