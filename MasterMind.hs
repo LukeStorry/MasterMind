@@ -59,19 +59,19 @@ play secret = do
 	putStr "\n> "
 	hFlush stdout
 	guess <- getLine
-	if ((guess \= []) && (guess \= secret)
+	if ((guess \= []) && (guess \= secret))
 	    then do
 		putStr (score secret guess)  
 		play secret    
+
 --using: https://www.haskell.org/tutorial/io.html
 -- and http://stackoverflow.com/questions/5695649/
 
-
 --generates number, starts and ends game
 main :: IO()
-main = do  
-	secret <- show(randomRIO 0 9)++show(randomRIO 0 9) ++ show(randomRIO 0 9)++ show(randomRIO 0 9)
-	putStr "Guess the 4 digit secret, press Enter to give up"
-	play secret
-	putStr "The secret was "++secret
+main = do
+    secret <- show(randomRIO 0 9)++show(randomRIO 0 9) ++ show(randomRIO 0 9)++ show(randomRIO 0 9)
+    putStr "Guess the 4 digit secret, press Enter to give up"
+    play secret
+    putStr ("The secret was "++secret)
 
