@@ -11,7 +11,7 @@ digits (s:tring) -- splits inputted string into first char and a string
 --checks whether the input is valid
 valid :: Int -> String -> Bool
 valid n guess 
-    | digits guess && length guess == 4	    = True
+    | digits guess && length guess == n	    = True
     | otherwise				    = False
 
 --counts how many perfect matches there are in the guess
@@ -44,15 +44,25 @@ total (secret) (g:uess)
 
 --returns the silver score 
 silver :: String -> String -> Integer
-silver [secret] [guess] = (total secret guess) - (gold secret guess)
+silver secret guess = (total secret guess) - (gold secret guess)
 
 --result is a message for the user
 score :: String -> String -> String
+score secret guess
+    | valid 4 guess = "Golds "++show(gold secret guess)++", silvers "++show(silver secret guess)
+    | otherwise	    = "Bad guess"
 
 --I/O loop which repeatedly (a) prints out a prompt and reads in a line of text 
 play :: String -> IO()
--}
+play secret
+    = do    print "> "
+	    guess <- getLine
+	    if ((guess \= []) && (guess \= secret)
+		then print (score secret guess) 
+    | 
+
+--using: https://www.haskell.org/tutorial/io.html
 
 --generates number, starts and ends game
 main :: IO()
-main = print  (contains 'r' "ljrlasjrdl")
+main = do  
