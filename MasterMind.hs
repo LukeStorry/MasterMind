@@ -1,5 +1,6 @@
 import Data.Bool
 import System.IO
+import System.Random
 
 --Checks whether a string consists of digits.
 digits :: String -> Bool
@@ -55,12 +56,12 @@ score secret guess
 --I/O loop which repeatedly (a) prints out a prompt and reads in a line of text 
 play :: String -> IO()
 play secret = do
-	putStr "> "
+	putStr "\n> "
 	hFlush stdout
 	guess <- getLine
 	if ((guess \= []) && (guess \= secret)
 	    then do
-		print (score secret guess)  
+		putStr (score secret guess)  
 		play secret    
 --using: https://www.haskell.org/tutorial/io.html
 -- and http://stackoverflow.com/questions/5695649/
@@ -69,5 +70,8 @@ play secret = do
 --generates number, starts and ends game
 main :: IO()
 main = do  
-
+	secret <- show(randomRIO 0 9)++show(randomRIO 0 9) ++ show(randomRIO 0 9)++ show(randomRIO 0 9)
+	putStr "Guess the 4 digit secret, press Enter to give up"
+	play secret
+	putStr "The secret was "++secret
 
