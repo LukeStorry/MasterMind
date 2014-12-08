@@ -7,6 +7,9 @@ digits [x:s] -- splits inputted string into first char and a string
 
 --checks whether the input is valid
 valid :: Int -> String -> Bool
+valid n guess 
+    | digits guess && length guess == 4	    = true
+    | otherwise				    = false
 
 
 
