@@ -16,10 +16,13 @@ valid n guess
 --counts how many perfect matches there are in the guess
 gold :: String -> String -> Integer
 
+--checks whether a string contains a Char
 contains :: Char -> String -> Bool
 
+--removes the first occurence a digit from a string
 remove :: Char -> String -> String
 
+--
 total :: String -> String -> Integer
 
 silver :: String -> String -> Integer
