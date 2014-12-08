@@ -41,9 +41,10 @@ total _ []		    = 0
 total (secret) (g:uess) 
     | contains g secret	    = (total (remove g secret) (g:uess) ) +1 
     | otherwise		    = total secret uess 
-{-
+
 --returns the silver score 
 silver :: String -> String -> Integer
+silver [secret] [guess] = (total secret guess) - (gold secret guess)
 
 --result is a message for the user
 score :: String -> String -> String
